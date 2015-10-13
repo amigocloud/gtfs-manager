@@ -72,7 +72,8 @@ class GTFSManager:
                 print "File has changed. Merging ..."
                 self.merge_gtfs(self.stored_fname, self.current_fname, self.merged_fname)
                 shutil.copy2(self.current_fname, self.stored_fname)
-                return
+            else:
+                shutil.copy2(self.current_fname, self.merged_fname)
         else:
             shutil.copy2(self.current_fname, self.stored_fname)
             shutil.copy2(self.current_fname, self.merged_fname)
