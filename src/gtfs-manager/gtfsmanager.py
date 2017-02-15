@@ -69,10 +69,12 @@ class GTFSManager:
         self.download_gtfs(self.current_fname, url)
         if os.path.isfile(self.stored_fname):
             if self.is_gtfs_changed():
-                print "File has changed. Merging ..."
-                self.merge_gtfs(self.stored_fname, self.current_fname, self.merged_fname)
-                shutil.copy2(self.current_fname, self.stored_fname)
-                return
+            	print "File has changed. Merging ..."
+            	self.merge_gtfs(self.stored_fname, self.current_fname, self.merged_fname)
+            	shutil.copy2(self.current_fname, self.stored_fname)
+	    else:
+		shutil.copy2(self.current_fname, self.merged_fname)
+            return
         else:
             shutil.copy2(self.current_fname, self.stored_fname)
             shutil.copy2(self.current_fname, self.merged_fname)
